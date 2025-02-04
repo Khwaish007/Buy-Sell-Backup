@@ -1,0 +1,41 @@
+.orders-history {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .tabs button {
+    background-color: #3498db;
+    flex: 1;
+    margin: 0 5px;
+  }
+  
+  .tabs button:hover {
+    background-color: #2980b9;
+  }
+  
+  .tab-content {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .tab-content ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .tab-content li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }

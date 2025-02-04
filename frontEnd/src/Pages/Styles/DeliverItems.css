@@ -1,0 +1,38 @@
+.delivery-page {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .delivery-order {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .delivery-item {
+    margin-bottom: 10px;
+  }
+  
+  .otp-verification {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .otp-verification input {
+    flex: 1;
+  }
+  
+  .otp-verification button {
+    background-color: #27ae60;
+  }
+  
+  .otp-verification button:hover {
+    background-color: #219653;
+  }
