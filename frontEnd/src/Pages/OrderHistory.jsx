@@ -81,7 +81,7 @@ const OrderHistory = () => {
                 <ul>
                 {pendingOrders.map((order) => (
                   <li key={order.id}>
-                    Order ID: {order.id}, OTP: {order.otp}, Status:{" "}
+                    Order ID: {order.id}, Status:{" "}
                     {order.status}
                   </li>
                 ))}

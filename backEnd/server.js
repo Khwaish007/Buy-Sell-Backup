@@ -374,7 +374,7 @@ app.post("/api/checkout",authenticateToken, async (req, res) => {
       otps.push(otp); // Store the plaintext OTP for response
 
       // Hash the OTP
-      const saltRounds = 10; // Adjust salt rounds as needed
+      const hashedOtp = await bcrypt.hash(otp, 10); // 10 is the saltRounds
       const newOrder = new Order({
         userId,
         email,
@@ -382,7 +382,7 @@ app.post("/api/checkout",authenticateToken, async (req, res) => {
         items: orderItems,
         totalAmount,    
         status: 'pending',
-        otp: otp, 
+        otp: hashedOtp, 
       });
 
       await newOrder.save();
@@ -481,11 +481,13 @@ app.post("/api/orders/verify-delivery/:orderId", authenticateToken, async (req, 
   try {
     const { orderId } = req.params;
     const { otp } = req.body;
+    const hashed_otp = await bcrypt.hash(otp, 10);
     const order = await Order.findById(orderId);
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
-    if (order.otp !== otp) {
+    const isOtpValid = await bcrypt.compare(otp, order.otp);
+    if (!isOtpValid) {
       return res.status(400).json({ message: "Incorrect OTP" });
     }
     order.status = 'completed';
