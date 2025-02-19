@@ -13,7 +13,6 @@ const Sell = () => {
         category: "",
         price: "",
         vendor: "",
-        email: "",
         description: "",
         image: null,
     });
@@ -52,7 +51,6 @@ const Sell = () => {
         data.append("category", formData.category);
         data.append("price", formData.price);
         data.append("vendor", formData.vendor);
-        data.append("email", formData.email);
         data.append("description", formData.description);
         data.append("image", formData.image);
 
@@ -79,7 +77,6 @@ const Sell = () => {
                     category: "",
                     price: "",
                     vendor: "",
-                    email: "",
                     description: "",
                     image: null,
                 });
@@ -136,14 +133,6 @@ const Sell = () => {
                         name="vendor"
                         placeholder="Vendor Name"
                         value={formData.vendor}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        value={formData.email}
                         onChange={handleChange}
                         required
                     />

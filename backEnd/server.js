@@ -191,14 +191,28 @@ app.put("/api/user/update-profile", authenticateToken, async (req, res) => {
 });
 
 
-app.post("/api/products", authenticateToken,upload.single("image"), async (req, res) => {
+app.post("/api/products", authenticateToken, upload.single("image"), async (req, res) => {
   try {
-    const { name, category, price, vendor, email, description } = req.body;
+    const { name, category, price, vendor, description } = req.body;
     const image = req.file ? `/uploads/${req.file.filename}` : null;
-    if (!name || !category || !price || !vendor || !email || !description) {
+
+    // Extract the email from the authenticated user
+    const email = req.user.email;
+
+    if (!name || !category || !price || !vendor || !description) {
       return res.status(400).json({ message: "All fields are required" });
     }
-    const newProduct = new Product({ name, category, price, vendor, email, description, image, });
+
+    const newProduct = new Product({
+      name,
+      category,
+      price,
+      vendor,
+      email, // Automatically set the email from the authenticated user
+      description,
+      image,
+    });
+
     await newProduct.save();
     res.status(201).json({ message: "Product added successfully", product: newProduct });
   } catch (error) {
